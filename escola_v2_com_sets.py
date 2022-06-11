@@ -19,6 +19,7 @@ atividades = [
         ("Dança",aula_danca)
         ]
 print("#" * 40)
+
 for nome_atividade, atividade in atividades:
 
     print(f"Alunos da atividade {nome_atividade}\n")
