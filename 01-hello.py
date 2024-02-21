@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-""""Hello World Multi Linguas
+""""Hello World Multi Línguas
 
-Dependendo da líguo configurada no ambiente o programa exibe a mensagem 
+Dependendo da línguagem configurada no ambiente o programa exibe a mensagem
 correspondente.
 
 Como usar:
