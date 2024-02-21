@@ -12,24 +12,27 @@ Tenha a variável LANG devidamente configurada ex:
 
 Execução:
 
-    python3 hello.py
+    python3 01-hello.py
     ou
-    ./hello.py
+    ./01-hello.py
 """
 __version__ = "0.0.1"
 __author__ = "Ricardo Medeiros"
 __license__ = "Unlicense"
 
-#Dunder - indica 2 underlines antes e depois da palavra
+# Dunder - indica 2 underlines antes e depois da palavra
 
 import os
 
-current_language = os.getenv("LANG", "en_US")[:5] # idioma padrão en_US
+current_language = os.getenv("LANG", "en_US")[:5]  # idioma padrão en_US
 
 msg = "Hello, World!"
 
 if current_language == "pt_BR":
     msg = "Olá, Mundo!"
 elif current_language == "it_IT":
-    msg = "Ciao, Mundo!"
+    msg = "Ciao, Mondo!"
+elif current_language == "fr_FR":
+    msg = "Bonjour, Monde!"
+
 print(msg)

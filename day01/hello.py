@@ -2,7 +2,7 @@
 """Primeiro programa em Python
 
 # para dar permissão de execução ao arquivo
-chmod +x hello.py 
+chmod +x 01-hello.py
 
 Hello Word Multi Línguas
 
@@ -14,9 +14,9 @@ Tenha a variável LANG devidamente configurada
     export LANG=pt_BR
 
 Execução:
-    python3 hello.py
+    python3 01-hello.py
     ou
-    ./hello.py
+    ./01-hello.py
 """
 __version__ = "0.1"
 __author__ = "Ricardo Medeiros"
