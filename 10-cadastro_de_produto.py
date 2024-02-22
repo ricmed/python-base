@@ -1,24 +1,29 @@
 #!/usr/bin/env python3
-"""Cadastro de Produto"""
-__version__ = "0.1.0"
+"""Cadastro de Produto
 
-import pprint
+Uso de dicionários
+"""
+__version__ = "0.1"
+__author__ = 'Ricardo Medeiros'
+
+import pprint  # preaty print
 
 # Implementa hashtable, um misto entre o set e a list
 produto = {
-	"nome": "Caneta",
-	"cores": ["azul","branco"],
-	"preco": 3.23,
+    "nome": "Caneta",
+    "cores": ["azul", "branco"],
+    "preco": 3.23,
     "dimensao": {
         "altura": 12.1,
         "largura":  0.8
     },
-	"em_estoque": True,
-	"codigo": 45678,
-	"codebar": None,
+    "em_estoque": True,
+    "config": 45678,
+    "codebar": None,
 }
 
 cliente = {
+    "cod": 21,
     "nome": "Ricardo"
 }
 
@@ -28,7 +33,7 @@ compra = {
     "quantidade": 3
 }
 
-#pprint.pprint(compra)
+# pprint.pprint(compra)
 
 total_compra = compra['quantidade'] * compra["produto"]['preco']
 

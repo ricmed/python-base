@@ -16,7 +16,7 @@ Execução:
     ou
     ./01-hello.py
 """
-__version__ = "0.1.0"
+__version__ = "0.1.2"
 __author__ = "Ricardo Medeiros"
 __license__ = "Unlicense"
 
@@ -26,13 +26,12 @@ import os
 
 current_language = os.getenv("LANG", "en_US")[:5]  # idioma padrão en_US
 
-msg = "Hello, World!"
+msg = {
+    "en_US": "Hello, World!",
+    "pt_BR": "Olá, Mundo!",
+    "it_IT": "Ciao, Mondo!",
+    "fr_FR": "Bonjour, Monde!",
+    "es_ES": "Salut, Mundo!"
+}
 
-if current_language == "pt_BR":
-    msg = "Olá, Mundo!"
-elif current_language == "it_IT":
-    msg = "Ciao, Mondo!"
-elif current_language == "fr_FR":
-    msg = "Bonjour, Monde!"
-
-print(msg)
+print(msg[current_language])
