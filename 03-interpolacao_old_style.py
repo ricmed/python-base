@@ -11,11 +11,11 @@ clientes = ["Fernando", "Guilherme", "Marcus"]
 
 for cliente in clientes:
     print(email_tmpl % {
-                            "nome":cliente, 
-                            "produto":"Caneta Stabilo", 
-                            "texto":"problema de escrita fluída", 
-                            "link":"http://caneta.com.br", 
-                            "quantidade":2, 
-                            "preco":32.5
+                            "nome": cliente,
+                            "produto": "Caneta Stabilo",
+                            "texto": "problema de escrita fluída",
+                            "link": "http://caneta.com.br",
+                            "quantidade": 2,
+                            "preco": 2.5
                         }
     )

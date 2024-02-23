@@ -32,15 +32,26 @@ arguments = {
 }
 
 for arg in sys.argv[1:]:
-    key, value = arg.split("=")
+    try:
+        key, value = arg.split("=")
+    except ValueError as e:
+        # TODO Logging
+        print(f"[ERRO] {str(e)}")
+        print(f"Argumento inválido {arg}, você precisa usar `=`")
+        print(f"Você passou {arg}")
+        print("Tente algo como `--lang=pt-BR`")
+        sys.exit(1)
     key = key.lstrip('-').strip()
     value = value.strip()
+
+    # validando se a chave existe
     if key not in arguments:
         print(f"Valores inválidos {key}")
         sys.exit()
     arguments[key] = value
 
 current_language = arguments['lang']
+
 if current_language is None:
     # TODO: Usar repetição
     if 'LANG' in os.environ:
@@ -57,5 +68,12 @@ msg = {
     "fr_FR": "Bonjour, Monde!",
     "es_ES": "Salut, Mundo!",
 }
+try:
+    mensagem = msg[current_language]
+except KeyError as e:
+    print(f"[ERRO] {str(e)}")
+    print(f"Língua inválida {current_language}")
+    print(f"Líguas disponívels: {msg.keys()}")
+    sys.exit(1)
 
 print(msg[current_language] * int(arguments['count']))
