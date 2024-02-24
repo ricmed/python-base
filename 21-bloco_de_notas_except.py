@@ -10,7 +10,6 @@ $ notes.py 1 tech
 ...
 ...
 """
-__version__ = "0.2"
 
 import os
 import sys

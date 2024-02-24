@@ -19,12 +19,20 @@ Execução:
     ou
     ./01-hello.py
 """
-__version__ = "0.1.3"
-__author__ = "Ricardo Medeiros"
-__license__ = "Unlicense"
 
 import os
 import sys
+import logging
+
+log_level = os.getenv('LOG_LEVEL', 'DEBUG').upper()
+log = logging.Logger('logs.py', log_level)
+ch = logging.StreamHandler()
+ch.setLevel(log_level)
+fmt = logging.Formatter(
+    '%(asctime)s - %(name)s - %(levelname)s - l:%(lineno)d - f:%(filename)s %(message)s'
+)
+ch.setFormatter(fmt)
+log.addHandler(ch)
 
 arguments = {
     'lang': None,
@@ -35,10 +43,11 @@ for arg in sys.argv[1:]:
     try:
         key, value = arg.split("=")
     except ValueError as e:
-        print(f"[ERRO] {str(e)}")
-        print(f"Argumento inválido {arg}, você precisa usar `=`")
-        print(f"Você passou {arg}")
-        print("Tente algo como `--lang=pt-BR`")
+        log.error(
+            "Você precisa usar `=`, você passou %s. Tente algo como `--lang=pt-BR`. %s",
+            arg,
+            str(e)
+        )
         sys.exit(1)
     key = key.lstrip('-').strip()
     value = value.strip()

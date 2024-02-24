@@ -26,8 +26,6 @@ n2: 4
 
 Os resultados serão salvos em calc.log
 """
-__version__ = "0.3"
-__author__ = "Ricardo Medeiros"
 
 import sys
 import os
