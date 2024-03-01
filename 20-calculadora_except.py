@@ -54,7 +54,6 @@ if operation not in valid_operations:
 
 validated_nums = []
 for num in nums:
-    # TODO: Repetição com While e Try/Except
     if not num.replace(".", "").isdigit():
         print(f"Numero inválido {num}")
         sys.exit(1)
@@ -71,7 +70,6 @@ except ValueError as e:
     print(f"Números inválidos {validated_nums}")
     sys.exit(1)
 
-# TODO: Usar dicionário de funções
 if operation == "sum":
     result = n1 + n2
 elif operation == "sub":
@@ -93,7 +91,6 @@ try:
     with open(filepath, "a") as file:
         file.write(f"{timestamp} - {user} - {operation}, {n1}, {n2} = {result}\n")
 except PermissionError as e:
-    # TODO: logging
     print(f"[ERRO] {str(e)}")
     print(f"Sem permissão para escrever em {filepath}")
     sys.exit(1)

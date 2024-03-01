@@ -27,7 +27,6 @@ templatepath = os.path.join(path, templatename)
 for line in open(filepath):
     nome, email = line.split(",")
 
-    # TODO: Substituir por envio de email
     print(f"Enviando email para {nome} : {email}")
     print()
     print(

@@ -52,7 +52,6 @@ for arg in sys.argv[1:]:
 current_language = arguments['lang']
 
 if current_language is None:
-    # TODO: Usar repetição
     if 'LANG' in os.environ:
         current_language = os.getenv('LANG')
     else:

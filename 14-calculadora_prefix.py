@@ -51,7 +51,6 @@ if operation not in valid_operations:
 
 validated_nums = []
 for num in nums:
-    # TODO: Repetição com While e Try/Except
     if not num.replace(".", "").isdigit():
         print(f"Numero inválido {num}")
         sys.exit(1)
@@ -63,7 +62,6 @@ for num in nums:
 
 n1, n2 = validated_nums
 
-# TODO: Usar dicionário de funções
 if operation == "sum":
     result = n1 + n2
 elif operation == "sub":

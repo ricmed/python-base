@@ -1,40 +1,57 @@
 #!/usr/bin/env python3
-"""Calculadora Prefix.
+"""Calculadora infix.
 
 Funcionamento:
 
 [operação] [n1] [n2]
 
 Operações:
-sum → +
-sub → -
-mul → *
-div → /
+sum -> +
+sub -> -
+mul -> *
+div -> /
 
 Uso:
-$ prefixcalc.py sum 5 2
+$ infixcalc.py sum 5 2
 7
 
-$ prefixcalc.py mul 10 5
+$ infixcalc.py mul 10 5
 50
 
-$ prefixcalc.py
+$ infixcalc.py
 operação: sum
 n1: 5
 n2: 4
 9
 
-Os resultados serão salvos em calc.log
+Os resultados serão salvos em `calc.log`
 """
 
-import sys
+
 import os
+import sys
 
 from datetime import datetime
 
-while True:
-    arguments = sys.argv[1:]
+arguments = sys.argv[1:]
 
+
+valid_operations = {
+    "sum": lambda a, b: a + b,
+    "sub": lambda a, b: a - b,
+    "mul": lambda a, b: a * b,
+    "div": lambda a, b: a / b,
+}
+
+path = os.curdir
+filepath = os.path.join(path, "calc.log")
+timestamp = datetime.now().isoformat()
+user = os.getenv("USER", "anonymous")
+
+
+while True:
+
+    # Validacao
     if not arguments:
         operation = input("operação:")
         n1 = input("n1:")
@@ -47,7 +64,6 @@ while True:
 
     operation, *nums = arguments
 
-    valid_operations = ("sum", "sub", "mul", 'div')
     if operation not in valid_operations:
         print("Operação inválida")
         print(valid_operations)
@@ -64,21 +80,14 @@ while True:
             num = int(num)
         validated_nums.append(num)
 
-    n1, n2 = validated_nums
+    try:
+        n1, n2 = validated_nums
+    except ValueError as e:
+        print(str(e))
+        sys.exit(1)
 
-    if operation == "sum":
-        result = n1 + n2
-    elif operation == "sub":
-        result = n1 - n2
-    elif operation == "mul":
-        result = n1 * n2
-    elif operation == "div":
-        result = n1 / n2
-
-    path = os.curdir
-    filepath = os.path.join(path, "15-calc.log")
-    timestamp = datetime.now().isoformat()
-    user = os.getenv("USER", "unknown")
+    result = valid_operations[operation](n1, n2)
+    print(f"O resultado é {result}")
 
     try:
         with open(filepath, "a") as log:
@@ -87,11 +96,7 @@ while True:
         print(str(e))
         sys.exit(1)
 
-    # ou
-
-    # print(f"{operation}, {n1}, {n2} = {result}\n", file=open(filepath, "a"))
-
-    print(f"O resultado é {result}")
+    arguments = None
 
     if input("Pressione enter para continar ou qualquer tecla para sair"):
         break
